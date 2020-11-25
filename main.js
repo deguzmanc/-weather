@@ -27,14 +27,14 @@ function paritition(arr, low, high){
             if(arr[down] < pivot){
                 break;
             }
-            down++;
+            down--;
         }
         if(up < down){
             swap(arr, up, down);
         }
     }
-    swap(arr, up, down);
-    
+    swap(arr, low, down);
+    return down;
 }
 
 function swap(arr, i, j){
