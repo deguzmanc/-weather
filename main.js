@@ -1,4 +1,3 @@
-
 //array of objects that contains the information for the cities from local JSON
 var cityList = [];
 fetch('city.list.json')
@@ -9,3 +8,5 @@ fetch('city.list.json')
             cityList.push(data[i]);
         } 
     });
+
+let test = 0;
