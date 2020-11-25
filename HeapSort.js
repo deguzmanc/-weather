@@ -25,6 +25,15 @@ function descendingLat(a, b) {
     return a.coord.lat < b.coord.lat
 }
 
+//FIXME
+function ascendingDist(a, b, c) {
+    return a.coord.lat < b.coord.lat
+}
+
+function descendingDist(a, b, c) {
+    return a.coord.lat < b.coord.lat
+}
+
 // To heapify a subtree rooted with node i which is
 // an index in arr[]. n is size of heap
 function heapify(arr, n, i, compareFunction) {
@@ -52,20 +61,20 @@ function heapify(arr, n, i, compareFunction) {
 }
 
 //* ==== Main / exported function ==== *//
-function heapSort(arr, sortby) {
-    let func = ascendingName
+function heapSort(arr, sortby, ascending) {
+    let func = ascending ? ascendingName : descendingName
     switch (sortby) {
         case 'name':
-            func = ascendingName
+            func = ascending ? ascendingName : descendingName
             break;
         case 'longitude':
-            func = ascendingLon
+            func = ascending ? ascendingLon : descendingLon
             break;
         case 'latitude':
-            func = ascendingLat
+            func = ascending ? ascendingLat : descendingLat
             break;
         case 'distance':
-            func = ascendingName
+            func = ascending ? ascendingDist : descendingDist
             break;
     }
 
@@ -87,21 +96,21 @@ function heapSort(arr, sortby) {
     }
 }
 
-function topElements(arr, l, sortby) {
+function topElements(arr, l, sortby, ascending) {
     //build opposite heap as heapsort
-    let func = descendingName
+    let func = ascending ? descendingName : ascendingName
     switch (sortby) {
         case 'name':
-            func = descendingName
+            func = ascending ? descendingName : ascendingName
             break;
         case 'longitude':
-            func = descendingLon
+            func = ascending ? descendingLon :ascendingLon
             break;
         case 'latitude':
-            func = descendingLat
+            func = ascending ? descendingLat : ascendingLat
             break;
         case 'distance':
-            func = descendingName
+            func = ascending ? descendingDist : ascendingDist
             break;
     }
 

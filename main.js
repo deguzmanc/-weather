@@ -136,7 +136,7 @@ let cityArray = [{
 let myArray = [3, 2, 1, 15, 1, 4]
 let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
 
-heapSort(cityArray, "name")
+heapSort(cityArray, "name", true)
 console.log(cityArray)
 // heapSort(cityArray, "latitude")
 // console.log(cityArray)
