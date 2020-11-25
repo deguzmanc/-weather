@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>//weather</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="title">
+            <h1>//weather: </h1>
+        </div>
+        <div class="sidenav">
+            <h5>Sort By: </h5>
+            <input type="radio" id="long" name="sortBy" value="longitude">
+            <label for="long">Longitude</label><br>
+            <input type="radio" id="lat" name="sortBy" value="latitude">
+            <label for="long">Latitude</label><br>
+            <h5>Display: </h5>
+            <input type="text" placeholder="max 100,000">
+            <h5>Sort Type: </h5>
+            <input type="radio" id="heap" name="sortBy" value="heapsort">
+            <label for="long">Heap</label><br>
+            <input type="radio" id="quick" name="sortBy" value="Quick">
+            <label for="long">Quick</label><br>
+            <input type="text" placeholder="Search..">
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
