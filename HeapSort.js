@@ -1,11 +1,11 @@
 //* ==== Passed functions for sorts ==== *//
 function ascendingName(a, b) {
-    var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+    let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
     return nameA.localeCompare(nameB) === 1
 }
 
 function descendingName(a, b) {
-    var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
+    let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
     return nameA.localeCompare(nameB) === -1
 }
 
@@ -62,6 +62,8 @@ function heapify(arr, n, i, compareFunction) {
 
 //* ==== Main / exported function ==== *//
 function heapSort(arr, sortby, ascending) {
+    if (ascending === undefined)
+        ascending = true                //default
     let func = ascending ? ascendingName : descendingName
     switch (sortby) {
         case 'name':

@@ -133,14 +133,16 @@ let cityArray = [{
         "lat": 36.894329
     }
 }]
+
 let myArray = [3, 2, 1, 15, 1, 4]
-let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
+
+//console.log(quickSort(myArray))
 
 heapSort(cityArray, "name", true)
 console.log(cityArray)
-// heapSort(cityArray, "latitude")
+// heapSort(cityArray, "latitude", true)
 // console.log(cityArray)
-// heapSort(cityArray, "longitude")
+// heapSort(cityArray, "longitude", true)
 //console.log(cityArray)
 
 //FIXME requires deep copy
