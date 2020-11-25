@@ -9,22 +9,10 @@ fetch('city.list.json')
         } 
     });
 
-/*
 let myArray = [1, 2 ,3];
 function compareInts(a, b) {
     return a - b;
 }
-
-function compareStrings(a, b) {
-    var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase()
-    if (nameA < nameB) //sort string ascending
-        return -1 
-    if (nameA > nameB)
-        return 1
-    return 0 //default return value (no sorting)
-        }
-    });
-
 
 function ascending(a, b) {
     return a > b
@@ -61,12 +49,104 @@ function selectionSort(arr, compareFunction) {
         }
     }
     return arr;
+    }   
 }
+//let myArray = [3, 2, 1]
+//console.log(selectionSort(myArray, compareInts))
+//testing
+let cityArray = [
+{
+    "id": 4046319,
+    "name": "Bayou La Batre",
+    "state": "AL",
+    "country": "US",
+    "coord": {
+        "lon": -88.24852,
+        "lat": 30.403521
+    }
+},
+{
+    "id": 4046332,
+    "name": "Henderson",
+    "state": "TX",
+    "country": "US",
+    "coord": {
+        "lon": -94.799377,
+        "lat": 32.153221
+    }
+},
+{
+    "id": 4046430,
+    "name": "Natalia",
+    "state": "TX",
+    "country": "US",
+    "coord": {
+        "lon": -98.862534,
+        "lat": 29.18968
+    }
+},
+{
+    "id": 4046440,
+    "name": "Northrup",
+    "state": "TX",
+    "country": "US",
+    "coord": {
+        "lon": -96.970261,
+        "lat": 30.1005
+    }
+},
+{
+    "id": 4046472,
+    "name": "Primrose",
+    "state": "TX",
+    "country": "US",
+    "coord": {
+        "lon": -97.43335,
+        "lat": 32.611519
+    }
+},
+{
+    "id": 4046499,
+    "name": "Bear Creek",
+    "state": "AL",
+    "country": "US",
+    "coord": {
+        "lon": -87.700577,
+        "lat": 34.274818
+    }
+},
+{
+    "id": 4046704,
+    "name": "Fort Hunt",
+    "state": "VA",
+    "country": "US",
+    "coord": {
+        "lon": -77.058029,
+        "lat": 38.732891
+    }
+},
+{
+    "id": 4046760,
+    "name": "Jack",
+    "state": "VA",
+    "country": "US",
+    "coord": {
+        "lon": -77.509148,
+        "lat": 37.196541
+    }
+},
+{
+    "id": 4046946,
+    "name": "Yorktown",
+    "state": "VA",
+    "country": "US",
+    "coord": {
+        "lon": -76.509666,
+        "lat": 37.238762
+    }
+}];
 
-let myArray = [3, 2, 1]
-console.log(selectionSort(myArray, compareInts))
-*/
-
+//================================START OF QUICK SORT===============================
 function paritition(arr, low, high){
     let pivot = arr[low];
     let up = low;
@@ -83,14 +163,14 @@ function paritition(arr, low, high){
             if(arr[down] < pivot){
                 break;
             }
-            down++;
+            down--;
         }
         if(up < down){
             swap(arr, up, down);
         }
     }
-    swap(arr, up, down);
-    
+    swap(arr, low, down);
+    return down;
 }
 
 function swap(arr, i, j){
@@ -107,6 +187,14 @@ function quickSort (arr, low, high){
     }
     return arr;
 }
+
+let testArr = [1, 3, 2, 10, 6, 4312, 5, 11]
+let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
+quickSort(testArr, 0, testArr.length-1);
+quickSort(strArray, 0, strArray.length);
+quickSort(cityArray, 0, cityArray.length);
+console.log(cityArray);
+//================================END OF QUICK SORT===============================
 
 
 // To heapify a subtree rooted with node i which is
@@ -154,90 +242,10 @@ function heapSort(arr) {
     }
 }
 
-//testing
-let cityArray = [{
-    "id": 833,
-    "name": "Ḩeşār-e Sefīd",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 47.159401,
-        "lat": 34.330502
-    }
-},
-{
-    "id": 2960,
-    "name": "‘Ayn Ḩalāqīm",
-    "state": "",
-    "country": "SY",
-    "coord": {
-        "lon": 36.321911,
-        "lat": 34.940079
-    }
-},
-{
-    "id": 3245,
-    "name": "Taglag",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 44.98333,
-        "lat": 38.450001
-    }
-},
-{
-    "id": 3530,
-    "name": "Qabāghlū",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 46.168499,
-        "lat": 36.173302
-    }
-},
-{
-    "id": 5174,
-    "name": "‘Arīqah",
-    "state": "",
-    "country": "SY",
-    "coord": {
-        "lon": 36.48336,
-        "lat": 32.889809
-    }
-},
-{
-    "id": 7264,
-    "name": "Kalāteh-ye Dowlat",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 57.616982,
-        "lat": 36.163841
-    }
-},
-{
-    "id": 8084,
-    "name": "Behjatābād",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 51.461639,
-        "lat": 36.667431
-    }
-},
-{
-    "id": 9874,
-    "name": "Ţālesh Maḩalleh",
-    "state": "",
-    "country": "IR",
-    "coord": {
-        "lon": 50.679192,
-        "lat": 36.894329
-    }
-}]
-let myArray = [3, 2, 1, 15, 1, 4]
-let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
+
+//let myArray = [3, 2, 1, 15, 1, 4]
+//let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
 heapSort(myArray)
 console.log(myArray)
 //console.log(selectionSort(myArray, descending))
-console.log(selectionSort(strArray, compareStrings))
+//console.log(selectionSort(strArray, compareStrings))
