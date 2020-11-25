@@ -1,4 +1,4 @@
-import { heapSort } from './HeapSort.js';
+import { heapSort, topElements } from './HeapSort.js';
 
 //array of objects that contains the information for the cities from local JSON
 var cityList = [];
@@ -136,9 +136,25 @@ let cityArray = [{
 let myArray = [3, 2, 1, 15, 1, 4]
 let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
 
-// heapSort(cityArray, "name")
-// console.log(cityArray)
+heapSort(cityArray, "name")
+console.log(cityArray)
 // heapSort(cityArray, "latitude")
 // console.log(cityArray)
-heapSort(cityArray, "longitude")
-console.log(cityArray)
+// heapSort(cityArray, "longitude")
+//console.log(cityArray)
+
+//FIXME requires deep copy
+/*
+let l = 5;
+let cArr = [];
+let cArr2 = topElements(cityArray, l, "name");
+
+for (let i = 0; i < l; i++) {
+    cArr.push(cityArray[i])
+}
+console.log(cArr)
+
+// cArr.forEach(element => {
+//     console.log(element.name);
+// });
+*/

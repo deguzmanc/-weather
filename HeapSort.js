@@ -87,4 +87,46 @@ function heapSort(arr, sortby) {
     }
 }
 
-export { heapSort };
+function topElements(arr, l, sortby) {
+    //build opposite heap as heapsort
+    let func = descendingName
+    switch (sortby) {
+        case 'name':
+            func = descendingName
+            break;
+        case 'longitude':
+            func = descendingLon
+            break;
+        case 'latitude':
+            func = descendingLat
+            break;
+        case 'distance':
+            func = descendingName
+            break;
+    }
+
+    let n = arr.length;
+
+    // Build heap in place
+    for (let i = n / 2 - 1; i >= 0; i--)
+        heapify(arr, n, i, func);
+
+    //copy top l elements into array and return
+    let tArr = []
+    for (let i = n - 1; i > n - 1 - l; i--) {
+        // copy into array
+        let temp = arr[0];
+        tArr.push(temp)
+
+        //swap
+        arr[0] = arr[i];
+        arr[i] = temp;
+
+        // call max heapify on the reduced heap
+        heapify(arr, i, 0, func);
+    }
+    
+    return tArr
+}
+
+export { heapSort, topElements};
