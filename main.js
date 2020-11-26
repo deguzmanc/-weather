@@ -138,25 +138,8 @@ let myArray = [3, 2, 1, 15, 1, 4]
 
 //console.log(quickSort(myArray))
 
-// heapSort(cityArray, "name", true)
-// console.log(cityArray)
-// heapSort(cityArray, "latitude", true)
-// console.log(cityArray)
-heapSort(cityArray, "longitude", false)
-console.log(cityArray)
+// console.log(heapSort(cityList).map(a => a.name)) //prints names
 
-//FIXME requires deep copy
-/*
-let l = 5;
-let cArr = [];
-let cArr2 = topElements(cityArray, l, "name");
-
-for (let i = 0; i < l; i++) {
-    cArr.push(cityArray[i])
-}
-console.log(cArr)
-
-// cArr.forEach(element => {
-//     console.log(element.name);
-// });
-*/
+console.log(heapSort(cityArray, "name", true))
+// console.log(heapSort(cityArray, "latitude", true))
+// console.log(heapSort(cityArray, "longitude", false))
