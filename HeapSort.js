@@ -1,59 +1,61 @@
-//* ==== Passed functions for sorts ==== *//
+//* ==== Passed comparison functions for sorts ==== *//
 function ascendingName(a, b) {
     let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
-    return nameA.localeCompare(nameB) === 1
+    return nameA.localeCompare(nameB)
 }
 
 function descendingName(a, b) {
     let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
-    return nameA.localeCompare(nameB) === -1
+    return nameB.localeCompare(nameA)
 }
 
 function ascendingLon(a, b) {
-    return a.coord.lon > b.coord.lon
+    return a.coord.lon > b.coord.lon ? 1 : -1
 }
 
 function descendingLon(a, b) {
-    return a.coord.lon < b.coord.lon
+    return a.coord.lon < b.coord.lon ? 1 : -1
 }
 
 function ascendingLat(a, b) {
-    return a.coord.lat > b.coord.lat
+    return a.coord.lat > b.coord.lat ? 1 : -1
 }
 
 function descendingLat(a, b) {
-    return a.coord.lat < b.coord.lat
+    return a.coord.lat < b.coord.lat ? 1 : -1
 }
 
 //FIXME
 function ascendingDist(a, b, c) {
-    return a.coord.lat < b.coord.lat
+    return a.coord.lat < b.coord.lat ? 1 : -1
 }
 
 function descendingDist(a, b, c) {
-    return a.coord.lat < b.coord.lat
+    return a.coord.lat < b.coord.lat ? 1 : -1
 }
 
-// To heapify a subtree rooted with node i which is
-// an index in arr[]. n is size of heap
+function swap(arr, i, j){
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+}
+
 function heapify(arr, n, i, compareFunction) {
-    let largest = i; // Initialize largest as root
-    let l = 2 * i + 1; // left = 2*i + 1
-    let r = 2 * i + 2; // right = 2*i + 2
+    let largest = i;        //initialize largest as root
+    let l = 2 * i + 1;
+    let r = 2 * i + 2;
 
     // If left child is larger than root
-    if (l < n && compareFunction(arr[l], arr[largest]))
+    if (l < n && compareFunction(arr[l], arr[largest]) === 1)
         largest = l;
 
-    // If right child is larger than largest so far
-    if (r < n && compareFunction(arr[r], arr[largest]))
+    // If right child is larger than others
+    if (r < n && compareFunction(arr[r], arr[largest]) === 1)
         largest = r;
 
     // If largest is not root
     if (largest != i) {
-        let swap = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = swap;
+        swap(arr, i, largest)
 
         // Recursively heapify the affected sub-tree
         heapify(arr, n, largest, compareFunction);
@@ -82,18 +84,17 @@ function heapSort(arr, sortby, ascending) {
 
     let n = arr.length;
 
-    // Build heap (rearrange array)
+    // Build heap in place
     for (let i = n / 2 - 1; i >= 0; i--)
         heapify(arr, n, i, func);
 
     // One by one extract an element from heap
     for (let i = n - 1; i > 0; i--) {
-        // Move current root to end
         let temp = arr[0];
         arr[0] = arr[i];
         arr[i] = temp;
 
-        // call max heapify on the reduced heap
+        // call heapify on the reduced heap
         heapify(arr, i, 0, func);
     }
 }
@@ -125,16 +126,10 @@ function topElements(arr, l, sortby, ascending) {
     //copy top l elements into array and return
     let tArr = []
     for (let i = n - 1; i > n - 1 - l; i--) {
-        // copy into array
-        let temp = arr[0];
-        tArr.push(temp)
+        tArr.push(arr[0])       // copy into array
 
-        //swap
-        arr[0] = arr[i];
-        arr[i] = temp;
-
-        // call max heapify on the reduced heap
-        heapify(arr, i, 0, func);
+        swap(arr, i, 0)         //swap with root
+        heapify(arr, i, 0, func);           // call max heapify on the reduced heap
     }
     
     return tArr
