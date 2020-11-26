@@ -1,3 +1,4 @@
+import { heapSort, topElements } from './HeapSort.js';
 
 //array of objects that contains the information for the cities from local JSON
 var cityList = [];
@@ -7,89 +8,48 @@ fetch('city.list.json')
     }).then(function (data) {
         for (var i in data) {
             cityList.push(data[i]);
-        }
+        } 
     });
 
+function paritition(arr, low, high){
+    let pivot = arr[low];
+    let up = low;
+    let down = high;
 
-function ascending(a, b) {
-    return a > b
-}
-
-function descending(a, b) {
-    return b > a
-}
-
-function compareStrings(a, b) {
-    var nameA = a.toLowerCase(), nameB = b.toLowerCase()
-    // if (nameA < nameB) //sort string ascending
-    //     return -1 
-    // if (nameA > nameB)
-    //     return 1
-    return nameA > nameB //default return value (no sorting)
-}
-
-function selectionSort(arr, compareFunction) {
-    let len = arr.length;
-    for (let i = 0; i < len; i++) {
-        let min = i;
-        for (let j = i + 1; j < len; j++) {
-            //if (arr[min] > arr[j]) {
-            if (compareFunction(arr[min], arr[j])) {
-                min = j;
+    while(up < down){
+        for(let i = up; i < high; i++){
+            if(arr[up] > pivot){
+                break;
             }
+            up++;
         }
-        if (min !== i) {
-            let tmp = arr[i];
-            arr[i] = arr[min];
-            arr[min] = tmp;
+        for(let i = down; i > low; i--){
+            if(arr[down] < pivot){
+                break;
+            }
+            down--;
         }
+        if(up < down){
+            swap(arr, up, down);
+        }
+    }
+    swap(arr, low, down);
+    return down;
+}
+
+function swap(arr, i, j){
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+ }
+
+function quickSort (arr, low, high){
+    if (low < high){
+        let pivot = paritition(arr, low, high);
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
     }
     return arr;
-}
-
-// To heapify a subtree rooted with node i which is
-// an index in arr[]. n is size of heap
-function heapify(arr, n, i) {
-    let largest = i; // Initialize largest as root
-    let l = 2 * i + 1; // left = 2*i + 1
-    let r = 2 * i + 2; // right = 2*i + 2
-
-    // If left child is larger than root
-    if (l < n && arr[l] > arr[largest])
-        largest = l;
-
-    // If right child is larger than largest so far
-    if (r < n && arr[r] > arr[largest])
-        largest = r;
-
-    // If largest is not root
-    if (largest != i) {
-        let swap = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = swap;
-
-        // Recursively heapify the affected sub-tree
-        heapify(arr, n, largest);
-    }
-}
-
-function heapSort(arr) {
-    let n = arr.length;
-
-    // Build heap (rearrange array)
-    for (let i = n / 2 - 1; i >= 0; i--)
-        heapify(arr, n, i);
-
-    // One by one extract an element from heap
-    for (let i = n - 1; i > 0; i--) {
-        // Move current root to end
-        let temp = arr[0];
-        arr[0] = arr[i];
-        arr[i] = temp;
-
-        // call max heapify on the reduced heap
-        heapify(arr, i, 0);
-    }
 }
 
 //testing
@@ -173,9 +133,30 @@ let cityArray = [{
         "lat": 36.894329
     }
 }]
+
 let myArray = [3, 2, 1, 15, 1, 4]
-let strArray = ["Chris Brugal", "Joshua Fu", "Joshua McHarris", "Carlos de Guzman", "Carlos"]
-heapSort(myArray)
-console.log(myArray)
-//console.log(selectionSort(myArray, descending))
-console.log(selectionSort(strArray, compareStrings))
+
+//console.log(quickSort(myArray))
+
+heapSort(cityArray, "name", false)
+console.log(cityArray)
+// heapSort(cityArray, "latitude", true)
+// console.log(cityArray)
+// heapSort(cityArray, "longitude", true)
+//console.log(cityArray)
+
+//FIXME requires deep copy
+/*
+let l = 5;
+let cArr = [];
+let cArr2 = topElements(cityArray, l, "name");
+
+for (let i = 0; i < l; i++) {
+    cArr.push(cityArray[i])
+}
+console.log(cArr)
+
+// cArr.forEach(element => {
+//     console.log(element.name);
+// });
+*/
