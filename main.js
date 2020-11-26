@@ -138,7 +138,7 @@ let myArray = [3, 2, 1, 15, 1, 4]
 
 //console.log(quickSort(myArray))
 
-heapSort(cityArray, "name", true)
+heapSort(cityArray, "name", false)
 console.log(cityArray)
 // heapSort(cityArray, "latitude", true)
 // console.log(cityArray)
