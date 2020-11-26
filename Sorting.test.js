@@ -87,3 +87,9 @@ test("Heap Sort in ascending order", () => {
     let cityNames = ["‘Arīqah", "‘Ayn Ḩalāqīm", "Behjatābād", "Ḩeşār-e Sefīd", "Kalāteh-ye Dowlat", "Qabāghlū", "Taglag", "Ţālesh Maḩalleh"]
     expect(heapSort(cityArray).map(a => a.name)).toEqual(cityNames)
 })
+
+test("Heap Sort in descending longitude", () => {
+    let cityNames = ["Kalāteh-ye Dowlat", "Behjatābād", "Ţālesh Maḩalleh", "Ḩeşār-e Sefīd", "Qabāghlū", "Taglag", "‘Arīqah", "‘Ayn Ḩalāqīm"]
+    
+    expect(heapSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityNames)
+})

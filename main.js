@@ -138,12 +138,12 @@ let myArray = [3, 2, 1, 15, 1, 4]
 
 //console.log(quickSort(myArray))
 
-heapSort(cityArray, "name", true)
-console.log(cityArray)
+// heapSort(cityArray, "name", true)
+// console.log(cityArray)
 // heapSort(cityArray, "latitude", true)
 // console.log(cityArray)
-// heapSort(cityArray, "longitude", true)
-//console.log(cityArray)
+heapSort(cityArray, "longitude", false)
+console.log(cityArray)
 
 //FIXME requires deep copy
 /*
