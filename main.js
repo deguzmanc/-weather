@@ -1,4 +1,4 @@
-import { heapSort, topElements } from './HeapSort.js';
+import { heapSort, topElements } from './Sorting.js';
 
 //array of objects that contains the information for the cities from local JSON
 var cityList = [];
@@ -138,7 +138,7 @@ let myArray = [3, 2, 1, 15, 1, 4]
 
 //console.log(quickSort(myArray))
 
-heapSort(cityArray, "name", false)
+heapSort(cityArray, "name", true)
 console.log(cityArray)
 // heapSort(cityArray, "latitude", true)
 // console.log(cityArray)

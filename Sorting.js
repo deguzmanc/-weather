@@ -97,6 +97,7 @@ function heapSort(arr, sortby, ascending) {
         // call heapify on the reduced heap
         heapify(arr, i, 0, func);
     }
+    return arr
 }
 
 function topElements(arr, l, sortby, ascending) {
