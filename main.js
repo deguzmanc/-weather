@@ -12,7 +12,6 @@ fetch('city.list.json')
         } 
     });
 
-
 //testing
 let cityArray = [{
     "id": 833,

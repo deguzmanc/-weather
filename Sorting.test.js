@@ -86,8 +86,8 @@ var cityArray = [{
 }]
 
 //array of objects that contains the information for the cities from local JSON
-var cityList = require("./city.list.json")
-var cityList2 = _.cloneDeep( cityList )
+//var cityList = require("./city.list.json")
+//var cityList2 = _.cloneDeep( cityList )
 
 test("Heap Sort in ascending order", () => {
     let cityNames = ["‘Arīqah", "‘Ayn Ḩalāqīm", "Behjatābād", "Ḩeşār-e Sefīd", "Kalāteh-ye Dowlat", "Qabāghlū", "Taglag", "Ţālesh Maḩalleh"]
