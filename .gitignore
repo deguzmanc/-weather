@@ -3,3 +3,7 @@
 
 # IDEs and editors
 /.idea
+
+# Test and config files
+*.test.js
+*.config.js
