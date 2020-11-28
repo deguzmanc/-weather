@@ -29,20 +29,26 @@
             <h3>Humidity: </h3>
             <h3 id="displayHumid"></h3>
         </div>
+        <!--put all of the inputs into a form so that we can submit them in the end -->
         <div class="sidenav">
             <h5>Sort By: </h5>
-            <input type="radio" id="long" name="sortBy" value="longitude">
-            <label for="long">Longitude</label><br>
-            <input type="radio" id="lat" name="sortBy" value="latitude">
-            <label for="long">Latitude</label><br>
-            <h5>Display: </h5>
-            <input type="text" placeholder="max 100,000">
-            <h5>Sort Type: </h5>
-            <input type="radio" id="heap" name="sortType" value="heapsort">
-            <label for="long">Heap</label><br>
-            <input type="radio" id="quick" name="sortType" value="Quick">
-            <label for="long">Quick</label><br>
-            <input type="text" placeholder="Search..">
+            <form id="form" autocomplete="off" action="/">
+                <input type="radio" id="long" name="sortBy" value="longitude">
+                <label for="long">Longitude</label><br>
+                <input type="radio" id="lat" name="sortBy" value="latitude">
+                <label for="long">Latitude</label><br>
+                <h5>Display: </h5>
+                <input type="text" placeholder="max 100,000">
+                <h5>Sort Type: </h5>
+                <input type="radio" id="heap" name="sortType" value="heapsort">
+                <label for="long">Heap</label><br>
+                <input type="radio" id="quick" name="sortType" value="Quick">
+                <label for="long">Quick</label><br>
+                <input id= "cityName" type="text" placeholder="Search..">
+                <button type="submit" id="enterButton">
+                    <i>submit</i>
+                </button>
+            </form>
         </div>
         <div class="footer">
 
