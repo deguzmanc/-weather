@@ -100,6 +100,11 @@ let myArray = [3, 2, 1, 15, 1, 4]
 //console.log(quickSort(myArray))
 // console.log(heapSort(cityList).map(a => a.name)) //prints names
 console.log(heapSort(cityArray, "name", true))
+console.log(quickSort(myArray))
+console.log(cityList.sort())
+// console.log(heapSort(cityList).map(a => a.name)) //prints names
+// console.log(cityList)
+
 // console.log(heapSort(cityArray, "latitude", true))
 // console.log(heapSort(cityArray, "longitude", false))
 
