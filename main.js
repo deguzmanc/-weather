@@ -11,6 +11,16 @@ fetch('city.list.json')
         } 
     });
 
+var cityListUS = [];
+fetch('citiesListUS.json')
+    .then(function (response) {
+        return response.json();
+    }).then(function (data) {
+        for (var i in data) {
+            cityListUS.push(data[i]);
+        } 
+    });
+
 function paritition(arr, low, high){
     let pivot = arr[low];
     let up = low;
