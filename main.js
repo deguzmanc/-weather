@@ -1,4 +1,5 @@
 import { heapSort, topElements } from './Sorting.js';
+import {quickSort} from './quicksort.js';
 
 //array of objects that contains the information for the cities from local JSON
 var cityList = [];
@@ -10,57 +11,6 @@ fetch('city.list.json')
             cityList.push(data[i]);
         } 
     });
-
-var cityListUS = [];
-fetch('citiesListUS.json')
-    .then(function (response) {
-        return response.json();
-    }).then(function (data) {
-        for (var i in data) {
-            cityListUS.push(data[i]);
-        } 
-    });
-
-function paritition(arr, low, high){
-    let pivot = arr[low];
-    let up = low;
-    let down = high;
-
-    while(up < down){
-        for(let i = up; i < high; i++){
-            if(arr[up] > pivot){
-                break;
-            }
-            up++;
-        }
-        for(let i = down; i > low; i--){
-            if(arr[down] < pivot){
-                break;
-            }
-            down--;
-        }
-        if(up < down){
-            swap(arr, up, down);
-        }
-    }
-    swap(arr, low, down);
-    return down;
-}
-
-function swap(arr, i, j){
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
- }
-
-function quickSort (arr, low, high){
-    if (low < high){
-        let pivot = paritition(arr, low, high);
-        quickSort(arr, low, pivot - 1);
-        quickSort(arr, pivot + 1, high);
-    }
-    return arr;
-}
 
 //testing
 let cityArray = [{
@@ -147,26 +97,16 @@ let cityArray = [{
 let myArray = [3, 2, 1, 15, 1, 4]
 
 //console.log(quickSort(myArray))
+// console.log(heapSort(cityList).map(a => a.name)) //prints names
+console.log(heapSort(cityArray, "name", true))
+console.log(quickSort(myArray))
+console.log(cityList.sort())
+// console.log(heapSort(cityList).map(a => a.name)) //prints names
+// console.log(cityList)
 
-// heapSort(cityArray, "name", true)
-// console.log(cityArray)
-// heapSort(cityArray, "latitude", true)
-// console.log(cityArray)
-heapSort(cityArray, "longitude", false)
-console.log(cityArray)
+// console.log(heapSort(cityArray, "latitude", true))
+// console.log(heapSort(cityArray, "longitude", false))
 
-//FIXME requires deep copy
-/*
-let l = 5;
-let cArr = [];
-let cArr2 = topElements(cityArray, l, "name");
+console.log(quickSort(myArray))
 
-for (let i = 0; i < l; i++) {
-    cArr.push(cityArray[i])
-}
-console.log(cArr)
 
-// cArr.forEach(element => {
-//     console.log(element.name);
-// });
-*/

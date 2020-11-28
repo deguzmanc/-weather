@@ -136,4 +136,4 @@ function topElements(arr, l, sortby, ascending) {
     return tArr
 }
 
-export { heapSort, topElements};
+export { heapSort, topElements, ascendingName };
