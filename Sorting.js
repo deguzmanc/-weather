@@ -82,8 +82,8 @@ function heapify(arr, n, i, compareFunction, city) {
     if (largest != i) {
         swap(arr, i, largest)
 
-        // Recursively heapify the affected sub-tree
-        heapify(arr, n, largest, compareFunction, city);
+        // Recursively heapify the sub-tree
+        heapify(arr, n, largest, compareFunction, city)
     }
 }
 
@@ -110,7 +110,7 @@ function heapSort(arr, sortby, ascending, city) {
     let n = arr.length;
 
     // Build heap in place
-    for (let i = n / 2 - 1; i >= 0; i--)
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
         heapify(arr, n, i, func, city);
 
     // One by one extract an element from heap
@@ -204,7 +204,7 @@ function topHeap(arr, sortby, l, ascending, city) {
     let n = arr.length;
 
     // Build heap in place
-    for (let i = n / 2 - 1; i >= 0; i--)
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
         heapify(arr, n, i, func, city);
 
     //put l elements at back of array
