@@ -12,25 +12,25 @@ fetch('city.list.json')
         } 
     });
 
-let sortBy, displayNum, sortType, cityName;
-var form = document.getElementById('form');
-form.addEventListener('submit', (e) =>{
-    e.preventDefault();
-    displayNum = document.getElementById("number").value;
-    cityName = document.getElementById("cityName").value;
-
-    if(document.getElementById("heap").checked){
-        sortType = "heap";
-    }else if (document.getElementById('quick').checked){
-        sortType = "quick";
-    }
-
-    if(document.getElementById("long").checked){
-        sortBy = "long";
-    }else if (document.getElementById('lat').checked){
-        sortBy = "lat";
-    }
-})
+    let sortBy, displayNum, sortType, cityName;
+    var form = document.getElementById('form');
+    form.addEventListener('submit', (e) =>{
+        e.preventDefault();
+        displayNum = document.getElementById("number").value;
+        cityName = document.getElementById("cityName").value;
+    
+        if(document.getElementById("heap").checked){
+            sortType = "heap";
+        }else if (document.getElementById('quick').checked){
+            sortType = "quick";
+        }
+    
+        if(document.getElementById("long").checked){
+            sortBy = "long";
+        }else if (document.getElementById('lat').checked){
+            sortBy = "lat";
+        }
+    })
 
 //testing
 let cityArray = [{
