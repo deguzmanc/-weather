@@ -136,4 +136,62 @@ function topElements(arr, l, sortby, ascending) {
     return tArr
 }
 
-export { heapSort, topElements, ascendingName };
+function paritition(arr, low, high, compareFunction){
+    let pivot = arr[low];
+    let up = low;
+    let down = high;
+    
+    while(up < down) {
+        for(let i = up; i < high; i++){
+            // if(arr[up] > pivot) {
+            if (up > 0 && up < arr.length && compareFunction(arr[up], pivot) === 1) {
+                break;
+            }
+            up++;
+        }
+        for(let i = down; i > low; i--){
+            // if(down > 0 && down < arr.length && arr[down] < pivot) {
+            if (down > 0 && down < arr.length && compareFunction(arr[down], pivot) === -1) {
+                break;
+            }
+            down--;
+        }
+        if(up < down){
+            swap(arr, up, down);
+        }
+    }
+    swap(arr, low, down);
+    return down;
+}
+
+function quickSortHelp (arr, low, high, compareFunction){
+    if (low < high){
+        let pivot = paritition(arr, low, high, compareFunction);
+        quickSortHelp(arr, low, pivot - 1, compareFunction);
+        quickSortHelp(arr, pivot + 1, high, compareFunction);
+    }
+    return arr;
+}
+
+function quickSort(arr, sortby, ascending) {
+    if (ascending === undefined)
+        ascending = true                //default
+    let func = ascending ? ascendingName : descendingName
+    switch (sortby) {
+        case 'name':
+            func = ascending ? ascendingName : descendingName
+            break;
+        case 'longitude':
+            func = ascending ? ascendingLon : descendingLon
+            break;
+        case 'latitude':
+            func = ascending ? ascendingLat : descendingLat
+            break;
+        case 'distance':
+            func = ascending ? ascendingDist : descendingDist
+            break;
+    }
+    return quickSortHelp(arr, 0, arr.length, func)
+}
+
+export { heapSort, topElements, ascendingName, descendingName, quickSort, descendingLon };

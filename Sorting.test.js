@@ -1,5 +1,5 @@
 import { expect, test } from '@jest/globals';
-import { heapSort, topElements, ascendingName } from './Sorting.js';
+import { heapSort, topElements, ascendingName, quickSort, descendingLon } from './Sorting.js';
 const fetch = require("node-fetch");
 const _ = require("lodash")
 
@@ -85,20 +85,25 @@ var cityArray = [{
     }
 }]
 
-//array of objects that contains the information for the cities from local JSON
-//var cityList = require("./city.list.json")
-//var cityList2 = _.cloneDeep( cityList )
+let cityArray2 = _.cloneDeep(cityArray)
 
 test("Heap Sort in ascending order", () => {
-    let cityNames = ["‘Arīqah", "‘Ayn Ḩalāqīm", "Behjatābād", "Ḩeşār-e Sefīd", "Kalāteh-ye Dowlat", "Qabāghlū", "Taglag", "Ţālesh Maḩalleh"]
-    expect(heapSort(cityArray).map(a => a.name)).toEqual(cityNames)
+    expect(heapSort(cityArray).map(a => a.name)).toEqual(cityArray2.sort(ascendingName).map(a => a.name))
 })
 
 test("Heap Sort in descending longitude", () => {
     let cityNames = ["Kalāteh-ye Dowlat", "Behjatābād", "Ţālesh Maḩalleh", "Ḩeşār-e Sefīd", "Qabāghlū", "Taglag", "‘Arīqah", "‘Ayn Ḩalāqīm"]
-    expect(heapSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityNames)
+    expect(heapSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityArray2.sort(descendingLon).map(a => a.name))
 })
 
-test("Heap Sort in ascending name with whole data", () => {
-    expect(heapSort(cityList, "name").map(a => a.name)).toEqual(cityList2.sort(ascendingName).map(a => a.name))
+test("Quick Sort in ascending order", () => {
+    expect(quickSort(cityArray).map(a => a.name)).toEqual(cityArray2.sort(ascendingName).map(a => a.name))
 })
+
+test("Quick Sort in descending longitude", () => {
+    expect(quickSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityArray2.sort(descendingLon).map(a => a.name))
+})
+
+// test("Heap Sort in ascending name with whole data", () => {
+//     expect(heapSort(cityList, "name").map(a => a.name)).toEqual(cityList2.sort(ascendingName).map(a => a.name))
+// })
