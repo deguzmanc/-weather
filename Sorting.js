@@ -142,7 +142,6 @@ function paritition(arr, low, high, compareFunction){
     let down = high;
     
     while(up < down) {
-        console.log(arr[up])
         for(let i = up; i < high; i++){
             // if(arr[up] > pivot) {
             if (up > 0 && up < arr.length && compareFunction(arr[up], pivot) === 1) {
@@ -195,4 +194,4 @@ function quickSort(arr, sortby, ascending) {
     return quickSortHelp(arr, 0, arr.length, func)
 }
 
-export { heapSort, topElements, ascendingName, descendingName, quickSort, descendingLon};
+export { heapSort, topElements, ascendingName, descendingName, quickSort, descendingLon };
