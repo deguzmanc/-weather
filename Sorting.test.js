@@ -1,5 +1,6 @@
 import { expect, test } from '@jest/globals';
-import { heapSort, topElements, ascendingName, quickSort, descendingLon } from './Sorting.js';
+import { heapSort, quickSort, topHeap, topSelect, ascendingName, descendingName, ascendingLon, descendingLon, ascendingLat, descendingLat, ascendingDist, descendingDist } from './Sorting.js';
+// import { heapSort, topElements, ascendingName, quickSort, descendingLon, ascendingDist } from './Sorting.js';
 const fetch = require("node-fetch");
 const _ = require("lodash")
 
@@ -91,19 +92,18 @@ test("Heap Sort in ascending order", () => {
     expect(heapSort(cityArray).map(a => a.name)).toEqual(cityArray2.sort(ascendingName).map(a => a.name))
 })
 
-test("Heap Sort in descending longitude", () => {
-    let cityNames = ["Kalāteh-ye Dowlat", "Behjatābād", "Ţālesh Maḩalleh", "Ḩeşār-e Sefīd", "Qabāghlū", "Taglag", "‘Arīqah", "‘Ayn Ḩalāqīm"]
-    expect(heapSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityArray2.sort(descendingLon).map(a => a.name))
+test("Heap Sort and quickSort in descending longitude", () => {
+    expect(heapSort(cityArray, "longitude", false).map(a => a.name)).toEqual(quickSort(cityArray2, "longitude", false).map(a => a.name))
 })
 
 test("Quick Sort in ascending order", () => {
     expect(quickSort(cityArray).map(a => a.name)).toEqual(cityArray2.sort(ascendingName).map(a => a.name))
 })
 
-test("Quick Sort in descending longitude", () => {
-    expect(quickSort(cityArray, "longitude", false).map(a => a.name)).toEqual(cityArray2.sort(descendingLon).map(a => a.name))
+test("Heap Sort and Quick Sort in descending distance from Gainesville", () => {
+    expect(quickSort(cityArray, "distance", false).map(a => a.name)).toEqual(quickSort(cityArray2, "distance", false).map(a => a.name))
 })
 
-// test("Heap Sort in ascending name with whole data", () => {
-//     expect(heapSort(cityList, "name").map(a => a.name)).toEqual(cityList2.sort(ascendingName).map(a => a.name))
-// })
+test("topHeap and topSelect in asceding latitude", () => {
+    expect(topHeap(cityArray, "latitude", 3)).toEqual(topSelect(cityArray2,"latitude", 3))
+})
