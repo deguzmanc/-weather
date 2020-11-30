@@ -12,6 +12,44 @@ fetch('city.list.json')
         } 
     });
 
+var sortBy, displayNum, sortType, cityName;
+document.getElementById('form').addEventListener('submit', (e) =>{
+    e.preventDefault();
+    //displayNum = document.getElementById("number").value;
+    //cityName = document.getElementById("cityName").value;
+
+    if(document.getElementById("heap").checked){
+        sortType = "heap";
+    }else if (document.getElementById('quick').checked){
+        sortType = "quick";
+    }
+
+    if(document.getElementById("long").checked){
+        sortBy = "long";
+    }else if (document.getElementById('lat').checked){
+        sortBy = "lat";
+    }
+    getWeather();
+})
+
+function getWeather(){ 
+    fetch("http://api.openweathermap.org/data/2.5/weather?q=Gainesville,US&APPID=64c4674bb358ce6241ec014179c26214&units=imperial")
+    .then((response)=> response.json())
+    .then((data)=>{
+        console.log(data);
+        document.getElementById("displayCityName").innerHTML = data.name;
+        document.getElementById("displayTemp").innerHTML = data.main.temp + '°F';
+        document.getElementById("displayWeather").innerHTML = data.weather.description;
+        document.getElementById("displayCountryName").innerHTML = data.sys.country;
+        document.getElementById("displayLong").innerHTML = data.coord.lon;
+        document.getElementById("displayLat").innerHTML = data.coord.lat;
+        document.getElementById("displayFeelsLike").innerHTML = data.main.feels_like + '°F';
+        document.getElementById("displayHumid").innerHTML = data.main.humidity;
+        document.getElementById("displayWindSpeed").innerHTML = data.wind.speed;
+    })  
+}
+
+
 //testing
 let cityArray = [{
     "id": 833,
@@ -99,7 +137,7 @@ let myArray = [3, 2, 1, 15, 1, 4]
 //console.log(quickSort(myArray))
 // console.log(heapSort(cityList).map(a => a.name)) //prints names
 console.log(heapSort(cityArray, "name", true))
-console.log(quickSort(myArray))
+console.log(quickSort(myArray, 0, myArray.length))
 console.log(cityList.sort())
 // console.log(heapSort(cityList).map(a => a.name)) //prints names
 // console.log(cityList)
