@@ -11,7 +11,7 @@ fetch('city.list.json')
         } 
     });
 
-var sortBy, displayNum, sortType, cityName;
+var sortBy, displayNum, sortType, cityName, order;
 document.getElementById('form').addEventListener('submit', (e) =>{
     e.preventDefault();
     displayNum = document.getElementById("number").value;
@@ -23,9 +23,15 @@ document.getElementById('form').addEventListener('submit', (e) =>{
     }
 
     if(document.getElementById("long").checked){
-        sortBy = "long";
+        sortBy = "longitude";
     }else if (document.getElementById('lat').checked){
-        sortBy = "lat";
+        sortBy = "latitude";
+    }
+
+    if(document.getElementById("asc").checked){
+        order = true;
+    }else if (document.getElementById('desc').checked){
+        order = false;
     }
 })
 
@@ -51,3 +57,5 @@ function getWeather(){
         document.getElementById("displayWindSpeed").innerHTML = "Wind Speed: " + data.wind.speed + " mph";
     })  
 }
+
+
