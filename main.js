@@ -48,6 +48,6 @@ function getWeather(){
         document.getElementById("displayLat").innerHTML = "Latitude: " + data.coord.lat;
         document.getElementById("displayFeelsLike").innerHTML = "Feels like: " + data.main.feels_like + '°F';
         document.getElementById("displayHumid").innerHTML = "Humidity: " + data.main.humidity + "%";
-        document.getElementById("displayWindSpeed").innerHTML = "Wind Speed " + data.wind.speed + " mph";
+        document.getElementById("displayWindSpeed").innerHTML = "Wind Speed: " + data.wind.speed + " mph";
     })  
 }
