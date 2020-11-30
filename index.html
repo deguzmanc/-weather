@@ -11,54 +11,58 @@
 <body>
     <div class="wrapper">
         <div class="title">
-            <h1>//weather: </h1>
-            <hr class="divider1">
-        </div>
-        
-        <br>
-        <div class="box1">
-            <!--Placeholder Names for text w/o labels-->
-            <h1 id="displayCityName">GARY</h1>
-            <h1 id="displayStateName">INDIANA</h1>
-            <h2 id="displayCountryName">UNITED STATES OF AMERICA</h2>
-            <h3>Longitude, Latitude: </h3>
-            <h3 id="displayLongLat"></h3>
-            <h3>Wind Speed: </h3>
-            <h3 id="displayWindSpeed"></h3>
-            <h3>Feels Like: </h3>
-            <h3 id="displayFeelsLike"></h3>
-            <h3>Humidity: </h3>
-            <h3 id="displayHumid"></h3>
-        </div>
-        <!--put all of the inputs into a form so that we can submit them in the end -->
-        <div class="box2">
-            <h1 id="displayTemp">999</h1>
-            <h2 id="displayWeather">Cloudy with a Chance of Meatballs</h2>
-        </div>
-        <div class="sidenav">
-            <h5>Sort By: </h5>
-            <form id="form" autocomplete="off" action="/">
-                <input type="radio" id="long" name="sortBy" value="longitude">
-                <label for="long">Longitude</label><br>
-                <input type="radio" id="lat" name="sortBy" value="latitude">
-                <label for="long">Latitude</label><br>
-                <h5>Display: </h5>
-                <input type="text" placeholder="max 100,000">
-                <h5>Sort Type: </h5>
-                <input type="radio" id="heap" name="sortType" value="heapsort">
-                <label for="long">Heap</label><br>
-                <input type="radio" id="quick" name="sortType" value="Quick">
-                <label for="long">Quick</label><br>
-                <input id= "cityName" type="text" placeholder="Search..">
+            <h1>//weather:  </h1>
+            <form id="form2" autocomplete="off" action="/">
+            <input id= "cityName" type="text" placeholder="search...">
+            <!--
                 <button type="submit" id="enterButton">
                     <i>submit</i>
                 </button>
+                -->
             </form>
+           
         </div>
-        <div class="footer">
-
+        <hr class="divider1">
+        <div class="container1">
+            <div class="box1">
+                <!--Placeholder Names for text w/o labels-->
+                <h1 id="displayCityState">GARY, INDIANA</h1>
+                <h2 id="displayCountryName">UNITED STATES OF AMERICA</h2>
+                <h3>Longitude, Latitude: </h3>
+                <h3 id="displayLongLat"></h3>
+                <h3>Wind Speed: </h3>
+                <h3 id="displayWindSpeed"></h3>
+                <h3>Feels Like: </h3>
+                <h3 id="displayFeelsLike"></h3>
+                <h3>Humidity: </h3>
+                <h3 id="displayHumid"></h3>
+            </div>
+            <!--put all of the inputs into a form so that we can submit them in the end -->
+            <div class="box2">
+                <h1 id="displayTemp">999</h1>
+                <h2 id="displayWeather">Partly Cloudy</h2>
+            </div>
         </div>
     </div>
+    <div class="sidenav">
+        <h5>Sort By: </h5>
+        <form id="form" autocomplete="off" action="/">
+        <input type="radio" id="long" name="sortBy" value="longitude">
+        <label for="long">Longitude</label><br>
+        <input type="radio" id="lat" name="sortBy" value="latitude">
+        <label for="long">Latitude</label><br>
+        <h5>Display: </h5>
+        <input type="text" placeholder="max 100,000">
+        <h5>Sort Type: </h5>
+        <input type="radio" id="heap" name="sortType" value="heapsort">
+        <label for="long">Heap</label><br>
+        <input type="radio" id="quick" name="sortType" value="Quick">
+        <label for="long">Quick</label><br>
+        </form>
+</div>
+<div class="footer">
+
+</div>
     <script type="module" src="main.js"></script>
 </body>
 
