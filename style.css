@@ -19,14 +19,15 @@ body{
     line-height: 94px;
     color: #6DAEDB;
     margin: 0%;
-    padding-left: 50px;
+    padding-left: 25px;
     box-sizing: border-box;
 }
 .title input[type=text]{
-    margin-left: 15px;
+    margin-left: 0px;
     margin-top: 4px;
-    float: right;
-    width: 68%;
+    float: left;
+    width: 22%;
+    /*nice*/
     height: auto;
     box-sizing: border-box;
     font-size: 60px;
@@ -40,10 +41,14 @@ body{
     box-sizing: border-box;
     padding: 0;
 }
+.title input[type=text]:focus{
+    width: 69%;
+}
+
 .divider1{
     position: relative;
     float: left;
-    margin-left: 20px;
+    margin-left: 25px;
     width: 100%;
     border: 5px solid #2892D7;
     box-sizing: border-box;
@@ -112,4 +117,8 @@ body{
 .sidenav h5{
     margin: 0;
     padding: 0;
+}
+.sidenav label{
+    display: inline-block;
+    margin: auto;
 }
