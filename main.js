@@ -15,8 +15,8 @@ fetch('city.list.json')
 var sortBy, displayNum, sortType, cityName;
 document.getElementById('form').addEventListener('submit', (e) =>{
     e.preventDefault();
-    //displayNum = document.getElementById("number").value;
-    //cityName = document.getElementById("cityName").value;
+    displayNum = document.getElementById("number").value;
+    cityName = document.getElementById("cityName").value;
 
     if(document.getElementById("heap").checked){
         sortType = "heap";
@@ -33,7 +33,7 @@ document.getElementById('form').addEventListener('submit', (e) =>{
 })
 
 function getWeather(){ 
-    fetch("http://api.openweathermap.org/data/2.5/weather?q=Gainesville,US&APPID=64c4674bb358ce6241ec014179c26214&units=imperial")
+    fetch("http://api.openweathermap.org/data/2.5/weather?q="+cityName+"&APPID=64c4674bb358ce6241ec014179c26214&units=imperial")
     .then((response)=> response.json())
     .then((data)=>{
         console.log(data);
