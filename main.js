@@ -38,10 +38,12 @@ function getWeather(){
     .then((data)=>{
         console.log(data);
         document.getElementById("displayCityName").innerHTML = data.name;
+        document.getElementById("displayTemp").innerHTML = data.main.temp + '°F';
+        document.getElementById("displayWeather").innerHTML = data.weather.description;
         document.getElementById("displayCountryName").innerHTML = data.sys.country;
         document.getElementById("displayLong").innerHTML = data.coord.lon;
         document.getElementById("displayLat").innerHTML = data.coord.lat;
-        document.getElementById("displayFeelsLike").innerHTML = data.main.temp + '°F';
+        document.getElementById("displayFeelsLike").innerHTML = data.main.feels_like + '°F';
         document.getElementById("displayHumid").innerHTML = data.main.humidity;
         document.getElementById("displayWindSpeed").innerHTML = data.wind.speed;
     })  
