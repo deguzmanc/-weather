@@ -16,7 +16,6 @@ var sortBy, displayNum, sortType, cityName;
 document.getElementById('form').addEventListener('submit', (e) =>{
     e.preventDefault();
     displayNum = document.getElementById("number").value;
-    cityName = document.getElementById("cityName").value;
 
     if(document.getElementById("heap").checked){
         sortType = "heap";
@@ -29,6 +28,11 @@ document.getElementById('form').addEventListener('submit', (e) =>{
     }else if (document.getElementById('lat').checked){
         sortBy = "lat";
     }
+})
+
+document.getElementById("form2").addEventListener('submit', (e) =>{
+    e.preventDefault();
+    cityName = document.getElementById("cityName").value;
     getWeather();
 })
 
