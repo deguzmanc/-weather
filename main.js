@@ -287,6 +287,7 @@ function getWeather(){
         document.getElementById("displayTemp").innerHTML = data.main.temp + '°F';
         document.getElementById("displayWeather").innerHTML = data.weather.description;
         document.getElementById("displayCountryName").innerHTML = data.sys.country;
+        document.getElementById('flag').src = "https://www.countryflags.io/"+data.sys.country+"/flat/32.png";
         document.getElementById("displayLong").innerHTML = "Longitutde: " + data.coord.lon;
         document.getElementById("displayLat").innerHTML = "Latitude: " + data.coord.lat;
         document.getElementById("displayFeelsLike").innerHTML = "Feels like: " + data.main.feels_like + '°F';
