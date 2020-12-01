@@ -141,3 +141,10 @@ body{
     border: 5px;
     border-color: #2D2D2A;
 }
+#displayCountryName {
+    display: inline;
+    padding-right: .5em;
+}
+#flag {
+    vertical-align: -.5em;
+}

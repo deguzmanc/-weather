@@ -242,7 +242,7 @@ fetch('city.list.json')
         } 
     });
 
-var sortBy, displayNum, sortType, cityName, order;
+var sortBy, displayNum, sortType, cityName, order, cityObj;
 document.getElementById('form').addEventListener('submit', (e) =>{
     e.preventDefault();
     displayNum = document.getElementById("number").value;
@@ -266,9 +266,21 @@ document.getElementById('form').addEventListener('submit', (e) =>{
     }
 
     let output = '';
-    cityArray.forEach((i)=>{
-        output += "<li>"+i.name+ "," +i.country+"</li>"
-    })
+    // cityArray.forEach((i)=>{
+    //     output += "<li>"+i.name+ "," +i.country+"</li>"
+    // })
+    switch(sortType) {
+        case "heap":
+            heapSort(cityArray,sortBy,order,cityObj)
+            break;
+        case "quick":
+            quickSort(cityArray,sortBy,order,cityObj)
+            break;
+        default:
+    }
+    for (let i = 0; i < cityArray.length && i < displayNum; i++) {
+        output += "<li>"+cityArray[i].name+ "," +cityArray[i].country+"</li>"
+    }
     document.getElementById("cityArray").innerHTML = output;
 })
 
@@ -283,6 +295,7 @@ function getWeather(){
     .then((response)=> response.json())
     .then((data)=>{
         console.log(data);
+        cityObj = data;
         document.getElementById("displayCityName").innerHTML = data.name;
         document.getElementById("displayTemp").innerHTML = data.main.temp + '°F';
         document.getElementById("displayWeather").innerHTML = data.weather.description;
