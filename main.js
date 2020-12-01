@@ -303,9 +303,16 @@ document.getElementById('form').addEventListener('submit', (e) =>{
 
     let output = '';
     for (let i = 0; i < cityArray.length && i < displayNum; i++) { //put cities into list
-        output += "<li>"+cities[i].name+ "," +cities[i].country+"</li>"
+        output += `<li class="city-${i}">${cities[i].name}, ${cities[i].country}</li>`
     }
+
     document.getElementById("cityArray").innerHTML = output;
+    cities.forEach((city,i) => {
+        document.querySelector(`li.city-${i}`).addEventListener('click', () => {
+            cityName = document.querySelector(`li.city-${i}`).innerText;
+            getWeather();
+        })
+    });
 })
 
 document.getElementById("form2").addEventListener('submit', (e) =>{
@@ -333,4 +340,3 @@ function getWeather(){
         document.getElementById("displayWindSpeed").innerHTML = "Wind Speed: " + data.wind.speed + " mph";
     })  
 }
-
