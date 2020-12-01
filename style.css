@@ -148,3 +148,10 @@ body{
 #flag {
     vertical-align: -.5em;
 }
+#displayWeather{
+    display: inline;
+    padding-right: .5em;
+}
+#weatherIcon {
+    vertical-align: -1.65em;
+}

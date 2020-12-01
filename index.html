@@ -35,25 +35,34 @@
         <div class="box2">
             <h1 id="displayTemp">999°F</h1>
             <h2 id="displayWeather">Cloudy with a Chance of Meatballs</h2>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" id="weatherIcon">
         </div>
         <div class="sidenav">
             <form id="form" autocomplete="off" action="/">
                 <div class="searchOptions">
                     <h5>Sort By: </h5>
+                    <input type="radio" id="name" name="sortBy" value="name">
+                    <label for="name">Name</label><br>
                     <input type="radio" id="long" name="sortBy" value="longitude">
                     <label for="long">Longitude</label><br>
                     <input type="radio" id="lat" name="sortBy" value="latitude">
-                    <label for="long">Latitude</label><br>
+                    <label for="lat">Latitude</label><br>
+                    <input type="radio" id="dist" name="sortBy" value="distance">
+                    <label for="dist">Distance</label><br>
                     <h5>Sort Ascending/Descending: </h5>
                     <input type="radio" id="asc" name="sortAD" value="ascend">
-                    <label for="long">Ascending</label><br>
+                    <label for="asc">Ascending</label><br>
                     <input type="radio" id="desc" name="sortAD" value="descend">
-                    <label for="long">Descending</label><br>
+                    <label for="desc">Descending</label><br>
                     <h5>Sort Type: </h5>
                     <input type="radio" id="heap" name="sortType" value="heapsort">
-                    <label for="long">Heap</label><br>
+                    <label for="heap">Heap</label><br>
                     <input type="radio" id="quick" name="sortType" value="Quick">
-                    <label for="long">Quick</label><br>
+                    <label for="quick">Quick</label><br>
+                    <input type="radio" id="topHeap" name="sortType" value="topHeap">
+                    <label for="topHeap">topHeap</label><br>
+                    <input type="radio" id="topSelect" name="sortType" value="topSelect">
+                    <label for="topSelect">topSelect</label><br>
                     <h5>Display: </h5>
                     <input id="number" type="number" placeholder="max 100,000">
                     <button type="submit" id="enterButton">

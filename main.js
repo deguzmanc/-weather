@@ -252,11 +252,21 @@ document.getElementById('form').addEventListener('submit', (e) =>{
     }else if (document.getElementById('quick').checked){
         sortType = "quick";
     }
+    else if (document.getElementById('topHeap').checked){
+        sortType = "topHeap";
+    }
+    else if (document.getElementById('topSelect').checked){
+        sortType = "topSelect";
+    }
 
     if(document.getElementById("long").checked){
         sortBy = "longitude";
     }else if (document.getElementById('lat').checked){
         sortBy = "latitude";
+    }else if (document.getElementById('name').checked){
+        sortBy = "name";
+    }else if (document.getElementById('dist').checked){
+        sortBy = "distance";
     }
 
     if(document.getElementById("asc").checked){
@@ -265,21 +275,35 @@ document.getElementById('form').addEventListener('submit', (e) =>{
         order = false;
     }
 
-    let output = '';
-    // cityArray.forEach((i)=>{
-    //     output += "<li>"+i.name+ "," +i.country+"</li>"
-    // })
+    let t1, t2;
+    let cities = []
     switch(sortType) {
         case "heap":
-            heapSort(cityArray,sortBy,order,cityObj)
+            t1 = performance.now()
+            cities = heapSort(cityArray,sortBy,order,cityObj)
+            t2 = performance.now()
             break;
         case "quick":
-            quickSort(cityArray,sortBy,order,cityObj)
+            t1 = performance.now()
+            cities = quickSort(cityArray,sortBy,order,cityObj)
+            t2 = performance.now()
             break;
-        default:
+        case "topHeap":
+            t1 = performance.now()
+            cities = topHeap(cityArray, sortBy, displayNum, order, cityObj)
+            t2 = performance.now()
+            break;
+        case "topSelect":
+            t1 = performance.now()
+            cities = topSelect(cityArray, sortBy, displayNum, order, cityObj)
+            t2 = performance.now()
+            break;   
     }
-    for (let i = 0; i < cityArray.length && i < displayNum; i++) {
-        output += "<li>"+cityArray[i].name+ "," +cityArray[i].country+"</li>"
+    console.log(sortType + " took " + (t2 - t1) + " milliseconds.")
+
+    let output = '';
+    for (let i = 0; i < cityArray.length && i < displayNum; i++) { //put cities into list
+        output += "<li>"+cities[i].name+ "," +cities[i].country+"</li>"
     }
     document.getElementById("cityArray").innerHTML = output;
 })
@@ -299,6 +323,7 @@ function getWeather(){
         document.getElementById("displayCityName").innerHTML = data.name;
         document.getElementById("displayTemp").innerHTML = data.main.temp + '°F';
         document.getElementById("displayWeather").innerHTML = data.weather[0].description;
+        document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png";
         document.getElementById("displayCountryName").innerHTML = data.sys.country;
         document.getElementById('flag').src = "https://www.countryflags.io/"+data.sys.country+"/flat/32.png";
         document.getElementById("displayLong").innerHTML = "Longitutde: " + data.coord.lon;
