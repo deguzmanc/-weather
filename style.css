@@ -122,6 +122,9 @@ body{
 .sidenav input[type=number]{
     width: 100px;
 }
+.sidenav searchOptions{
+    position: fixed;
+}
 .sidenav button{
     background-color: #2D2D2A;
     border: none;

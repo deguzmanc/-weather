@@ -13,7 +13,9 @@
         <div class="title">
             <h1>//weather: </h1>
             <form id="form2" autocomplete="off" action="/">
-                <input id= "cityName" type="text" placeholder="search... (Ex.Miami,US)">
+                <input id= "cityName" type="text" placeholder="search... "
+                onfocus="this.placeholder='(Ex.Miami,US)'"
+                onblur="this.placeholder='search... '">
             </form>
         </div>
         <hr class="divider1">
@@ -35,26 +37,28 @@
         </div>
         <div class="sidenav">
             <form id="form" autocomplete="off" action="/">
-                <h5>Sort By: </h5>
-                <input type="radio" id="long" name="sortBy" value="longitude">
-                <label for="long">Longitude</label><br>
-                <input type="radio" id="lat" name="sortBy" value="latitude">
-                <label for="long">Latitude</label><br>
-                <h5>Sort Ascending/Descending: </h5>
-                <input type="radio" id="asc" name="sortAD" value="ascend">
-                <label for="long">Ascending</label><br>
-                <input type="radio" id="desc" name="sortAD" value="descend">
-                <label for="long">Descending</label><br>
-                <h5>Sort Type: </h5>
-                <input type="radio" id="heap" name="sortType" value="heapsort">
-                <label for="long">Heap</label><br>
-                <input type="radio" id="quick" name="sortType" value="Quick">
-                <label for="long">Quick</label><br>
-                <h5>Display: </h5>
-                <input id="number" type="number" placeholder="max 100,000">
-                <button type="submit" id="enterButton">
-                    <i>submit</i>
-                </button>
+                <div class="searchOptions">
+                    <h5>Sort By: </h5>
+                    <input type="radio" id="long" name="sortBy" value="longitude">
+                    <label for="long">Longitude</label><br>
+                    <input type="radio" id="lat" name="sortBy" value="latitude">
+                    <label for="long">Latitude</label><br>
+                    <h5>Sort Ascending/Descending: </h5>
+                    <input type="radio" id="asc" name="sortAD" value="ascend">
+                    <label for="long">Ascending</label><br>
+                    <input type="radio" id="desc" name="sortAD" value="descend">
+                    <label for="long">Descending</label><br>
+                    <h5>Sort Type: </h5>
+                    <input type="radio" id="heap" name="sortType" value="heapsort">
+                    <label for="long">Heap</label><br>
+                    <input type="radio" id="quick" name="sortType" value="Quick">
+                    <label for="long">Quick</label><br>
+                    <h5>Display: </h5>
+                    <input id="number" type="number" placeholder="max 100,000">
+                    <button type="submit" id="enterButton">
+                        <i>submit</i>
+                    </button>
+                </div>
                 <hr class="divider">
                 <ul id="cityArray"></ul>
             </form>
