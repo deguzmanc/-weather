@@ -146,7 +146,7 @@ body{
     padding-right: .5em;
 }
 #flag {
-    vertical-align: -.5em;
+    vertical-align: 0em;
 }
 #displayWeather{
     display: inline;
