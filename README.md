@@ -12,4 +12,6 @@ Once Live Server is downloaded, ```right click``` on ```"index.html"``` then cli
 
 ## Usage
 
+This web app is used to find the weather on a specific city. Other functionality of the website is that it is able to sort a specified amount of cities depending on the category chosen by the user (longitude, latitude, name, distance from a city).
+
 
