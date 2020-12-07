@@ -12,47 +12,72 @@
     <div class="wrapper">
         <div class="title">
             <h1>//weather: </h1>
-            <hr class="divider1">
+            <form id="form2" autocomplete="off" action="/">
+                <input id= "cityName" type="text" placeholder="search... "
+                onfocus="this.placeholder='(Ex.Miami,US)'"
+                onblur="this.placeholder='search... '">
+            </form>
         </div>
-        
+        <hr class="divider1">
         <br>
         <div class="box1">
             <!--Placeholder Names for text w/o labels-->
-            <h1 id="displayCityName">GARY</h1>
-            <h1 id="displayStateName">INDIANA</h1>
-            <h2 id="displayCountryName">UNITED STATES OF AMERICA</h2>
-            <h3>Longitude, Latitude: </h3>
-            <h3 id="displayLongLat"></h3>
-            <h3>Wind Speed: </h3>
+            <h1 id="displayCityName">City</h1>
+            <h2 id="displayCountryName">Country</h2>
+            <img src="" alt=""id="flag">
+            <h3 id="displayLong"></h3>
+            <h3 id="displayLat"></h3>
             <h3 id="displayWindSpeed"></h3>
-            <h3>Feels Like: </h3>
             <h3 id="displayFeelsLike"></h3>
-            <h3>Humidity: </h3>
             <h3 id="displayHumid"></h3>
         </div>
+        <!--put all of the inputs into a form so that we can submit them in the end -->
         <div class="box2">
-            <h1 id="displayTemp">999</h1>
+            <h1 id="displayTemp">999°F</h1>
             <h2 id="displayWeather">Cloudy with a Chance of Meatballs</h2>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="" id="weatherIcon">
         </div>
         <div class="sidenav">
-            <h5>Sort By: </h5>
-            <input type="radio" id="long" name="sortBy" value="longitude">
-            <label for="long">Longitude</label><br>
-            <input type="radio" id="lat" name="sortBy" value="latitude">
-            <label for="long">Latitude</label><br>
-            <h5>Display: </h5>
-            <input type="text" placeholder="max 100,000">
-            <h5>Sort Type: </h5>
-            <input type="radio" id="heap" name="sortType" value="heapsort">
-            <label for="long">Heap</label><br>
-            <input type="radio" id="quick" name="sortType" value="Quick">
-            <label for="long">Quick</label><br>
-            <input type="text" placeholder="Search..">
-        </div>
-        <div class="footer">
-
+            <form id="form" autocomplete="off" action="/">
+                <div class="searchOptions">
+                    <h5>Sort By: </h5>
+                    <input type="radio" id="name" name="sortBy" value="name">
+                    <label for="name">Name</label><br>
+                    <input type="radio" id="long" name="sortBy" value="longitude">
+                    <label for="long">Longitude</label><br>
+                    <input type="radio" id="lat" name="sortBy" value="latitude">
+                    <label for="lat">Latitude</label><br>
+                    <input type="radio" id="dist" name="sortBy" value="distance">
+                    <label for="dist">Distance</label><br>
+                    <h5>Sort Ascending/Descending: </h5>
+                    <input type="radio" id="asc" name="sortAD" value="ascend">
+                    <label for="asc">Ascending</label><br>
+                    <input type="radio" id="desc" name="sortAD" value="descend">
+                    <label for="desc">Descending</label><br>
+                    <h5>Sort Type: </h5>
+                    <input type="radio" id="heap" name="sortType" value="heapsort">
+                    <label for="heap">Heap</label><br>
+                    <input type="radio" id="quick" name="sortType" value="Quick">
+                    <label for="quick">Quick</label><br>
+                    <input type="radio" id="topHeap" name="sortType" value="topHeap">
+                    <label for="topHeap">topHeap</label><br>
+                    <input type="radio" id="topSelect" name="sortType" value="topSelect">
+                    <label for="topSelect">topSelect</label><br>
+                    <h5>Display: </h5>
+                    <input id="number" type="number" placeholder="max 100,000">
+                    <button type="submit" id="enterButton">
+                        <i>submit</i>
+                    </button>
+                </div>
+                <hr class="divider">
+                <ul id="cityArray"></ul>
+            </form>
+           
         </div>
     </div>
+<div class="footer">
+
+</div>
     <script type="module" src="main.js"></script>
 </body>
 
