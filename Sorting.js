@@ -124,7 +124,7 @@ function heapSort(arr, sortby, ascending, city) {
 }
 
 function paritition(arr, low, high, compareFunction, city){
-    let pivot = arr[low];
+    let pivot = arr[Math.floor((low + high) / 2)];//arr[low];
     let up = low;
     let down = high;
     

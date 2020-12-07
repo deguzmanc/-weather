@@ -280,22 +280,24 @@ document.getElementById('form').addEventListener('submit', (e) =>{
     switch(sortType) {
         case "heap":
             t1 = performance.now()
-            cities = heapSort(cityArray,sortBy,order,cityObj)
+            heapSort(cityList,sortBy,order,cityObj)
             t2 = performance.now()
+            cities = cityList.slice(0, displayNum);
             break;
         case "quick":
             t1 = performance.now()
-            cities = quickSort(cityArray,sortBy,order,cityObj)
+            quickSort(cityList,sortBy,order,cityObj)
             t2 = performance.now()
+            cities = cityList.slice(0, displayNum);
             break;
         case "topHeap":
             t1 = performance.now()
-            cities = topHeap(cityArray, sortBy, displayNum, order, cityObj)
+            cities = topHeap(cityList, sortBy, displayNum, order, cityObj)
             t2 = performance.now()
             break;
         case "topSelect":
             t1 = performance.now()
-            cities = topSelect(cityArray, sortBy, displayNum, order, cityObj)
+            cities = topSelect(cityList, sortBy, displayNum, order, cityObj)
             t2 = performance.now()
             break;   
     }
@@ -308,7 +310,8 @@ document.getElementById('form').addEventListener('submit', (e) =>{
 
     document.getElementById("cityArray").innerHTML = output;
     cities.forEach((city,i) => {
-        document.querySelector(`li.city-${i}`).addEventListener('click', () => {
+        document.querySelector(`li.city-${i}`).addEventListener('click', (e) => {
+            e.preventDefault();
             cityName = document.querySelector(`li.city-${i}`).innerText;
             getWeather();
         })
@@ -332,7 +335,7 @@ function getWeather(){
         document.getElementById("displayWeather").innerHTML = data.weather[0].description;
         document.getElementById("weatherIcon").src = "http://openweathermap.org/img/wn/"+data.weather[0].icon+"@2x.png";
         document.getElementById("displayCountryName").innerHTML = data.sys.country;
-        document.getElementById('flag').src = "https://www.countryflags.io/"+data.sys.country+"/flat/32.png";
+        document.getElementById('flag').src = "https://flagcdn.com/h20/"+data.sys.country.toLowerCase()+".png";
         document.getElementById("displayLong").innerHTML = "Longitutde: " + data.coord.lon;
         document.getElementById("displayLat").innerHTML = "Latitude: " + data.coord.lat;
         document.getElementById("displayFeelsLike").innerHTML = "Feels like: " + data.main.feels_like + '°F';
