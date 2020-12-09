@@ -7,20 +7,20 @@ function descendingName({ name: a }, {name: b}) {
     return b.localeCompare(a)
 }
 
-function ascendingLon({coord: {lon : a}}, {coord: {lon : b}}) {
-    return a - b
+function ascendingLon({coord: {lon : a}}, {coord: {lon : b}}, c) {
+    return c ? Math.abs(a - c.coord.lon) - Math.abs(b - c.coord.lon) : a - b;
 }
 
-function descendingLon({coord: {lon : a}}, {coord: {lon : b}}) {
-    return b - a
+function descendingLon({coord: {lon : a}}, {coord: {lon : b}}, c) {
+    return c ? Math.abs(b - c.coord.lon) - Math.abs(a - c.coord.lon) : b - a;
 }
 
-function ascendingLat({coord: {lat : a}}, {coord: {lat : b}}) {
-    return a - b
+function ascendingLat({coord: {lat : a}}, {coord: {lat : b}}, c) {
+    return c ? Math.abs(a - c.coord.lat) - Math.abs(b - c.coord.lat) : a - b;
 }
 
-function descendingLat({coord: {lat : a}}, {coord: {lat : b}}) {
-    return b - a
+function descendingLat({coord: {lat : a}}, {coord: {lat : b}}, c) {
+    return c ? Math.abs(b - c.coord.lat) - Math.abs(a - c.coord.lat) : b - a;
 }
 
 function distSquared({lat : aLat, lon : aLon}, {lat : bLat, lon : bLon}) {

@@ -321,6 +321,7 @@ document.getElementById('form').addEventListener('submit', (e) =>{
             
             break;   
     }
+    console.log(cities)
     console.log(sortType + " took " + (t2 - t1) + " milliseconds.")
 
     let output = '';
