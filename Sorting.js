@@ -1,62 +1,52 @@
 //* ==== Passed comparison functions for sorts ==== *//
-function ascendingName(a, b) {
-    // let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
-    return a.name.localeCompare(b.name)
+function ascendingName({ name: a }, {name: b}) {
+    return a.localeCompare(b)
 }
 
-function descendingName(a, b) {
-    // let nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase()
-    return b.name.localeCompare(a.name)
+function descendingName({ name: a }, {name: b}) {
+    return b.localeCompare(a)
 }
 
-function ascendingLon(a, b) {
-    return a.coord.lon > b.coord.lon ? 1 : -1
+function ascendingLon({coord: {lon : a}}, {coord: {lon : b}}) {
+    return a - b
 }
 
-function descendingLon(a, b) {
-    return a.coord.lon < b.coord.lon ? 1 : -1
+function descendingLon({coord: {lon : a}}, {coord: {lon : b}}) {
+    return b - a
 }
 
-function ascendingLat(a, b) {
-    return a.coord.lat > b.coord.lat ? 1 : -1
+function ascendingLat({coord: {lat : a}}, {coord: {lat : b}}) {
+    return a - b
 }
 
-function descendingLat(a, b) {
-    return a.coord.lat < b.coord.lat ? 1 : -1
+function descendingLat({coord: {lat : a}}, {coord: {lat : b}}) {
+    return b - a
 }
 
-function distSquared(c1, c2) {
-    return Math.pow(c1.coord.lat - c2.coord.lat, 2) + Math.pow(c1.coord.lon - c2.coord.lon, 2)
+function distSquared({lat : aLat, lon : aLon}, {lat : bLat, lon : bLon}) {
+    return Math.pow(aLat - bLat, 2) + Math.pow(aLon - bLon, 2)
 }
 
-function ascendingDist(a, b, c) {
-    if (c === undefined)
-        c = {
-            "id": 4156404,
-            "name": "Gainesville",
-            "state": "FL",
-            "country": "US",
-            "coord": {
-                "lon": -82.324829,
-                "lat": 29.65163
-            }
-        }
-    return distSquared(a, c) > distSquared(b, c) ? 1 : -1
+function ascendingDist({coord: a}, {coord: b}, x) {
+    if (x === undefined) {
+        let c = {lon : -82.324829, lat : 29.65163}
+        return distSquared(a, c) - distSquared(b, c)
+    }
+    else {
+        let { coord : c } = x;
+        return distSquared(a, c) - distSquared(b, c)
+    }        
 }
 
-function descendingDist(a, b, c) {
-    if (c === undefined)
-        c = {
-            "id": 4156404,
-            "name": "Gainesville",
-            "state": "FL",
-            "country": "US",
-            "coord": {
-                "lon": -82.324829,
-                "lat": 29.65163
-            }
-        }
-    return distSquared(a, c) < distSquared(b, c) ? 1 : -1
+function descendingDist({coord: a}, {coord: b}, x) {
+    if (x === undefined) {
+        let c = {lon : -82.324829, lat : 29.65163}
+        return distSquared(a, c) - distSquared(b, c)
+    }
+    else {
+        let { coord : c } = x;
+        return distSquared(a, c) - distSquared(b, c)
+    }       
 }
 
 function swap(arr, i, j){
@@ -71,11 +61,11 @@ function heapify(arr, n, i, compareFunction, city) {
     let r = 2 * i + 2;
 
     // If left child is larger than root
-    if (l < n && compareFunction(arr[l], arr[largest], city) === 1)
+    if (l < n && compareFunction(arr[l], arr[largest], city) > 0)
         largest = l;
 
     // If right child is larger than others
-    if (r < n && compareFunction(arr[r], arr[largest], city) === 1)
+    if (r < n && compareFunction(arr[r], arr[largest], city) > 0)
         largest = r;
 
     // If largest is not root
@@ -124,21 +114,22 @@ function heapSort(arr, sortby, ascending, city) {
 }
 
 function paritition(arr, low, high, compareFunction, city){
-    let pivot = arr[Math.floor((low + high) / 2)];//arr[low];
+    swap(arr, low, Math.floor((low + high) / 2))
+    let pivot = arr[low];
     let up = low;
     let down = high;
     
     while(up < down) {
         for(let i = up; i < high; i++){
             // if(arr[up] > pivot) {
-            if (up > 0 && up < arr.length && compareFunction(arr[up], pivot, city) === 1) {
+            if (up > 0 && up < arr.length && compareFunction(arr[up], pivot, city) > 0) {
                 break;
             }
             up++;
         }
         for(let i = down; i > low; i--){
             // if(down > 0 && down < arr.length && arr[down] < pivot) {
-            if (down > 0 && down < arr.length && compareFunction(arr[down], pivot, city) === -1) {
+            if (down > 0 && down < arr.length && compareFunction(arr[down], pivot, city) < 0) {
                 break;
             }
             down--;
@@ -244,7 +235,7 @@ function topSelect(arr, sortby, l, ascending, city) {
         let min = i;
         for(let j = i+1; j < n; j++){
             // if(func(inputArr[j] < inputArr[min]) {
-            if (func(arr[j], arr[min], city) === -1) {
+            if (func(arr[j], arr[min], city) < 0) {
                 min=j; 
             }
          }
