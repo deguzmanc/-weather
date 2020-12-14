@@ -4,6 +4,15 @@ import { heapSort, quickSort, topHeap, topSelect, ascendingName, descendingName,
 const fetch = require("node-fetch");
 const _ = require("lodash")
 
+var Gainesville = {
+    "name": "Gainesville",
+    "country": "US",
+    "coord": {
+      "lon": -98.521423,
+      "lat": 30.677679
+    }
+  }
+
 //testing
 var cityArray = [{
     "id": 833,
@@ -236,6 +245,16 @@ var cityArray = [{
     }
 }]
 
+// cityArray = [];
+// fetch('city.list.json')
+//     .then(function (response) {
+//         return response.json();
+//     }).then(function (data) {
+//         for (var i in data) {
+//             cityList.push(data[i]);
+//         } 
+//     });
+
 // console.log(cityArray)
 
 let cityArray2 = _.cloneDeep(cityArray)
@@ -261,5 +280,10 @@ test("Heap Sort and Quick Sort in descending distance from Gainesville", () => {
 })
 
 test("topHeap and topSelect in ascending latitude", () => {
-    expect(topHeap(cityArray, "latitude", 3)).toEqual(topSelect(cityArray2,"latitude", 3))
+    // console.log(topHeap(cityArray, "latitude", 3))
+    expect(topHeap(cityArray, "latitude", 3).slice(0,3)).toEqual(topSelect(cityArray2,"latitude", 3))//
+})
+
+test("Relative sorting by Longitude", () => {
+    expect(heapSort(cityArray, "longitude", true, Gainesville)).toEqual(quickSort(cityArray, "longitude", true,Gainesville))
 })
